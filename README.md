@@ -1,7 +1,7 @@
 Backpack Export XSLT
 ====================
 
-Stylesheet for converting your 37signals/Basecamp [Backpack](http://backpackit.com/) export XML into a URL list for downloading assets and images. This is essential for getting a "full" backup of your account without having to go through and click+download every image, attachment, asset, etc. manually. As Backpack is "[retired](https://basecamp.com/backpack-retired)", you may want to do this on a regular basis if you plan to continue using Backpack. Alternately, you may just want to get your data out and retire your account.
+Stylesheet for converting your 37signals/Basecamp [Backpack export XML](https://help.basecamp.com/backpack/questions/255-can-i-export-my-data-out-of-backpack) into a URL list for downloading assets and images. This is essential for getting a "full" backup of your account without having to go through and click+download every image, attachment, asset, etc. manually. As Backpack is "[retired](https://basecamp.com/backpack-retired)", you may want to do this on a regular basis if you plan to continue using Backpack. Alternately, you may just want to get your data out and retire your account.
 
 USAGE
 -----
