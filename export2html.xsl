@@ -23,6 +23,12 @@
           padding: 0px;
           margin: 0px;
         }
+        .separator hr {
+          margin-top: 0px;
+        }
+        .separator h1 {
+          margin-bottom: .25em;
+        }
       </style>
     </head>
     <body>
@@ -59,6 +65,12 @@
     <xsl:choose>
       <xsl:when test="name(.) = 'page'">
         <xsl:apply-templates select="belongings"/>
+      </xsl:when>
+      <xsl:when test="name(.) = 'separator'">
+        <h1>
+          <xsl:apply-templates/>
+        </h1>
+        <hr/>
       </xsl:when>
       <xsl:when test="name(.) = 'email'">
         <pre><code>
