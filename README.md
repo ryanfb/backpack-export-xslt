@@ -25,4 +25,4 @@ But Backpack is already quite rude in not respecting this for non-image assets a
 TODO
 ----
 
-A seperate stylesheet/script that takes the export XML and renders nice local static HTML output that includes/links the downloaded images/asssets.
+A separate stylesheet/script that takes the export XML and renders nice local static HTML output that includes/links the downloaded images/asssets.
