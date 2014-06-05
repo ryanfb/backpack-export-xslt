@@ -20,6 +20,13 @@
 
 <xsl:template match="position"/>
 
+<xsl:template match="belongings">
+  <xsl:for-each select="belonging">
+    <xsl:variable name="wid" select="widget/@id" />
+    <xsl:apply-templates select="//*[not(self::widget) and @id = $wid]" />
+  </xsl:for-each>
+</xsl:template>
+
 <xsl:template match="page|note|list|email|separator">
   <div>
     <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
@@ -27,7 +34,14 @@
     <h1>
       <xsl:value-of select="@title|@name|@subject"/>
     </h1>
-    <xsl:apply-templates />
+    <xsl:choose>
+      <xsl:when test="name(.) = 'page'">
+        <xsl:apply-templates select="belongings"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates />
+      </xsl:otherwise>
+    </xsl:choose>
   </div>
 </xsl:template>
 
