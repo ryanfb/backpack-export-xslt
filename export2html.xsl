@@ -9,8 +9,16 @@
 <xsl:template match="/">
   <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text>
   <html>
+    <head>
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
+    </head>
     <body>
-      <xsl:apply-templates />
+      <div class="container" role="main">
+        <xsl:apply-templates />
+      </div>
     </body>
   </html>
 </xsl:template>
@@ -32,6 +40,10 @@
     <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
     <xsl:attribute name="class"><xsl:value-of select ="name(.)"/></xsl:attribute>
     <h1>
+      <xsl:if test="name(.) = 'email'">
+        <span class="glyphicon glyphicon-envelope"></span>
+        <xsl:text disable-output-escaping="yes"><![CDATA[&nbsp;]]></xsl:text>
+      </xsl:if>
       <xsl:value-of select="@title|@name|@subject"/>
     </h1>
     <xsl:choose>
@@ -58,6 +70,8 @@
 </xsl:template>
 
 <xsl:template match="attachment">
+  <span class="glyphicon glyphicon-file"></span>
+  <xsl:text disable-output-escaping="yes"><![CDATA[&nbsp;]]></xsl:text>
   <a>
     <xsl:attribute name="href"><xsl:value-of select="$account"/>.backpackit.com/assets/<xsl:value-of select="@id"/>/as/<xsl:value-of select="@file_name"/></xsl:attribute>
     <xsl:value-of select="@file_name"/>
