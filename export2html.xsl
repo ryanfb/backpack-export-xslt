@@ -15,7 +15,7 @@
       <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
       <style>
-        .email h1, .list h1, .separator h1, .note h1 {
+        .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
           font-size: 1em;
         }
         ul {
@@ -51,7 +51,7 @@
   </xsl:for-each>
 </xsl:template>
 
-<xsl:template match="page|note|list|email|separator">
+<xsl:template match="page|note|list|email|separator|gallery">
   <div>
     <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
     <xsl:attribute name="class"><xsl:value-of select ="name(.)"/></xsl:attribute>
@@ -104,6 +104,30 @@
     </xsl:choose>
     <xsl:apply-templates />
   </li>
+</xsl:template>
+
+
+<xsl:template match="images">
+  <div class="row">
+    <xsl:apply-templates />
+  </div>
+</xsl:template>
+
+
+<xsl:template match="image">
+  <div class="col-lg-2 col-sm-3 col-xs-4">
+    <a>
+      <xsl:attribute name="href"><xsl:value-of select="$account"/>.backpackit.com/assets/<xsl:value-of select="@id"/>/as/<xsl:value-of select="@file_name"/></xsl:attribute>
+      <xsl:if test="@description">
+        <xsl:attribute name="title">
+          <xsl:value-of select="@description"/>
+        </xsl:attribute>
+      </xsl:if>
+      <img class="thumbnail img-responsive">
+        <xsl:attribute name="src"><xsl:value-of select="$account"/>.backpackit.com/thumbs/<xsl:value-of select="@id"/>/as/<xsl:value-of select="@file_name"/></xsl:attribute>
+      </img>
+    </a>
+  </div>
 </xsl:template>
 
 <xsl:template match="attachment">
