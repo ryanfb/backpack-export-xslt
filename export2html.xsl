@@ -12,8 +12,11 @@
     <head>
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
+      <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
       <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
+      <!-- <script src="https://raw.githubusercontent.com/Nijikokun/textile/master/lib/textile.js"></script> -->
+      <script src="https://raw.githubusercontent.com/borgar/textile-js/master/lib/textile.js"></script>
       <style>
         .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
           font-size: 1em;
@@ -30,6 +33,14 @@
           margin-bottom: .25em;
         }
       </style>
+      <script>
+      $(document).ready(function(){
+        $('.textile').each(function( index ) {
+          var result = textile($(this).text()).replace(/^.p./,"").replace(/..p.$/,"");
+          $(this).replaceWith(result);
+        });
+      });
+      </script>
     </head>
     <body>
       <div class="container" role="main">
@@ -72,6 +83,11 @@
         </h1>
         <hr/>
       </xsl:when>
+      <xsl:when test="name(.) = 'note'">
+        <div class="textile">
+          <xsl:apply-templates/>
+        </div>
+      </xsl:when>
       <xsl:when test="name(.) = 'email'">
         <pre><code>
           <xsl:apply-templates />
@@ -102,7 +118,9 @@
         <xsl:text disable-output-escaping="yes"><![CDATA[&nbsp;]]></xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates />
+    <div class="textile">
+      <xsl:apply-templates />
+    </div>
   </li>
 </xsl:template>
 
