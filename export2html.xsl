@@ -59,7 +59,7 @@
     </head>
     <body>
       <div class="container" role="main">
-        <xsl:apply-templates />
+        <xsl:apply-templates select="//pages"/>
       </div>
     </body>
   </html>
@@ -159,6 +159,11 @@
   </div>
 </xsl:template>
 
+<xsl:template match="message">
+  <p>
+    <xsl:value-of select="."/>
+  </p>
+</xsl:template>
 
 <xsl:template match="image">
   <div class="col-lg-2 col-sm-3 col-xs-4">
