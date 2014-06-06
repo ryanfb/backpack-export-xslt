@@ -1,7 +1,7 @@
 Backpack Export XSLT
 ====================
 
-Stylesheets for converting your 37signals/Basecamp [Backpack export XML](https://help.basecamp.com/backpack/questions/255-can-i-export-my-data-out-of-backpack) into usable, complete, static local backups. This is essential for getting a "full" backup of your account without having to go through and click+download every image, attachment, asset, page, etc. manually. As Backpack is "[retired](https://basecamp.com/backpack-retired)", you may want to do this on a regular basis if you plan to continue using Backpack. Alternately, you may just want to get your data out and retire your account.
+This repository contains stylesheets for converting your 37signals/Basecamp [Backpack export XML](https://help.basecamp.com/backpack/questions/255-can-i-export-my-data-out-of-backpack) into usable, complete, static local backups. This is essential for getting a "full" backup of your account without having to go through and click+download every image, attachment, asset, page, etc. manually. As Backpack is "[retired](https://basecamp.com/backpack-retired)", you may want to do this on a regular basis if you plan to continue using Backpack. Alternately, you may just want to get your data out and retire your account.
 
 USAGE
 -----
