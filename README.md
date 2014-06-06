@@ -27,8 +27,9 @@ Now that you have all your images and attachments downloaded, generate a static 
 
     saxon -xsl:export2html.xsl -s:export.xml -o:index.html
 
+This will generate an index.html and an HTML file for each page.
+
 TODO
 ----
 
 * Output messages/comments against list items & notes in the HTML
-* Add XSL params for output of a single page by ID/title (for archiving and sharing)
