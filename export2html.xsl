@@ -21,20 +21,6 @@
       <script src="lib/js/bootstrap-select.js"></script>
       <script src="lib/js/textile.js"></script>
       <style>
-        .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
-          font-size: 1em;
-        }
-        ul {
-          list-style-type: none;
-          padding: 0px;
-          margin: 0px;
-        }
-        .separator hr {
-          margin-top: 0px;
-        }
-        .separator h1 {
-          margin-bottom: .25em;
-        }
         .page {
           border: 1px solid #e1e1e8;
           background-color: #f7f7f9;
@@ -45,6 +31,22 @@
         }
         .page h1 {
           margin-top: 0px;
+        }
+        .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
+          font-size: 1em;
+          margin-top: 1em;
+        }
+        ul {
+          list-style-type: none;
+          padding: 0px;
+          margin: 0px;
+        }
+        .separator hr {
+          margin-top: 0px;
+        }
+        .separator h1 {
+          margin-top: 1em;
+          margin-bottom: .25em;
         }
       </style>
       <script>
