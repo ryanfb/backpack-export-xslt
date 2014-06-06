@@ -10,6 +10,10 @@
   <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text>
   <html>
     <head>
+      <title>
+        <xsl:value-of select="$account"/>
+        <xsl:text>.backpackit.com</xsl:text>
+      </title>
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
       <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
