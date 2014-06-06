@@ -7,7 +7,6 @@
 </xsl:variable>
 
 <xsl:template match="/">
-  <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text>
   <html>
     <head>
       <title>
@@ -16,51 +15,91 @@
       </title>
       <link rel="stylesheet" href="lib/css/bootstrap.min.css"/>
       <link rel="stylesheet" href="lib/css/bootstrap-theme.min.css"/>
-      <script src="lib/js/jquery-1.11.0.min.js"></script>
-      <script src="lib/js/bootstrap.min.js"></script>
-      <script src="lib/js/bootstrap-select.js"></script>
-      <script src="lib/js/textile.js"></script>
-      <style>
-        .page {
-          border: 1px solid #e1e1e8;
-          background-color: #f7f7f9;
-          border-radius: 4px;
-          padding: 1em;
-          margin-bottom: 1em;
-          margin-top: 2em;
-        }
-        .page h1 {
-          margin-top: 0px;
-        }
-        .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
-          font-size: 1em;
-          margin-top: 1em;
-        }
-        ul {
-          list-style-type: none;
-          padding: 0px;
-          margin: 0px;
-        }
-        .separator hr {
-          margin-top: 0px;
-        }
-        .separator h1 {
-          margin-top: 1em;
-          margin-bottom: .25em;
-        }
-      </style>
-      <script>
-      $(document).ready(function(){
-        $('.textile').each(function( index ) {
-          var result = textile($(this).text()).replace(/^.p./,"").replace(/..p.$/,"");
-          $(this).replaceWith(result);
-        });
-      });
-      </script>
     </head>
     <body>
-      <div class="container" role="main">
-        <xsl:apply-templates select="//pages"/>
+      <div class="container">
+        <br/>
+        <div class="jumbotron">
+          <h1>
+            <xsl:value-of select="$account"/>
+            <xsl:text>.backpackit.com</xsl:text>
+          </h1>
+        </div>
+        <ul>
+          <xsl:for-each select="//page">
+            <xsl:variable name="page_id">
+              <xsl:value-of select="@id"/>
+            </xsl:variable>
+            <xsl:variable name="page_title">
+              <xsl:value-of select="translate(@title, ' \/:?', '_____')" />
+            </xsl:variable>
+            <li>
+              <a>
+                <xsl:attribute name="href"><xsl:value-of select="$page_id"/>-<xsl:value-of select="$page_title"/>.html</xsl:attribute>
+                <xsl:value-of select="@title"/>
+              </a>
+            </li>
+            <xsl:result-document href="{$page_id}-{$page_title}.html" method="html" encoding="utf-8" indent="yes">
+              <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text>
+              <html>
+                <head>
+                  <title>
+                    <xsl:value-of select="$account"/>
+                    <xsl:text>.backpackit.com - </xsl:text>
+                    <xsl:value-of select="@title"/>
+                  </title>
+                  <link rel="stylesheet" href="lib/css/bootstrap.min.css"/>
+                  <link rel="stylesheet" href="lib/css/bootstrap-theme.min.css"/>
+                  <script src="lib/js/jquery-1.11.0.min.js"></script>
+                  <script src="lib/js/bootstrap.min.js"></script>
+                  <script src="lib/js/textile.js"></script>
+                  <style>
+                    .page {
+                      border: 1px solid #e1e1e8;
+                      background-color: #f7f7f9;
+                      border-radius: 4px;
+                      padding: 1em;
+                      margin-bottom: 1em;
+                      margin-top: 2em;
+                    }
+                    .page h1 {
+                      margin-top: 0px;
+                    }
+                    .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
+                      font-size: 1em;
+                      margin-top: 1em;
+                    }
+                    ul {
+                      list-style-type: none;
+                      padding: 0px;
+                      margin: 0px;
+                    }
+                    .separator hr {
+                      margin-top: 0px;
+                    }
+                    .separator h1 {
+                      margin-top: 1em;
+                      margin-bottom: .25em;
+                    }
+                  </style>
+                  <script>
+                  $(document).ready(function(){
+                    $('.textile').each(function( index ) {
+                      var result = textile($(this).text()).replace(/^.p./,"").replace(/..p.$/,"");
+                      $(this).replaceWith(result);
+                    });
+                  });
+                  </script>
+                </head>
+                <body>
+                  <div class="container" role="main">
+                    <xsl:apply-templates select="."/>
+                  </div>
+                </body>
+              </html>
+            </xsl:result-document>
+          </xsl:for-each>
+        </ul>
       </div>
     </body>
   </html>

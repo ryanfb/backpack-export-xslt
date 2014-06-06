@@ -31,5 +31,4 @@ TODO
 ----
 
 * Output messages/comments against list items & notes in the HTML
-* Paginate HTML by original Backpack page with searchable bootstrap-select and fragment URLs
 * Add XSL params for output of a single page by ID/title (for archiving and sharing)
