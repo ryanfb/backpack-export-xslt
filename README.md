@@ -1,10 +1,17 @@
 Backpack Export XSLT
 ====================
 
-Stylesheet for converting your 37signals/Basecamp [Backpack export XML](https://help.basecamp.com/backpack/questions/255-can-i-export-my-data-out-of-backpack) into a URL list for downloading assets and images. This is essential for getting a "full" backup of your account without having to go through and click+download every image, attachment, asset, etc. manually. As Backpack is "[retired](https://basecamp.com/backpack-retired)", you may want to do this on a regular basis if you plan to continue using Backpack. Alternately, you may just want to get your data out and retire your account.
+Stylesheets for converting your 37signals/Basecamp [Backpack export XML](https://help.basecamp.com/backpack/questions/255-can-i-export-my-data-out-of-backpack) into usable, complete, static local backups. This is essential for getting a "full" backup of your account without having to go through and click+download every image, attachment, asset, page, etc. manually. As Backpack is "[retired](https://basecamp.com/backpack-retired)", you may want to do this on a regular basis if you plan to continue using Backpack. Alternately, you may just want to get your data out and retire your account.
 
 USAGE
 -----
+
+There are two stylesheets included:
+
+* `export2urls.xsl`: for turning your export XML into a list of image, thumbnail, and asset URLs to be downloaded
+* `export2html.xsl`: for turning your export XML into static local HTML (references downloaded images/assets)
+
+First, you'll want to generate the list of URLs of data not included in the export XML that you need to download:
 
     saxon -xsl:export2urls.xsl -s:export.xml -o:urls.txt
 
@@ -16,13 +23,13 @@ Now you can download the URLs with a simple bash script, e.g.:
 
 Where cookies.txt is a cookies file you've exported from your browser after logging into Backpack.
 
-If you only have images you can be polite and use something like this for the download command instead:
+Now that you have all your images and attachments downloaded, generate a static HTML page from your export:
 
-    wget -x --header='Content-Type: application/xml' --post-data='<request><token>backpackAPItokengoeshere</token></request>' "$url"
-
-But Backpack is already quite rude in not respecting this for non-image assets and only accepting cookie auth, so who cares.
+    saxon -xsl:export2html.xsl -s:export.xml -o:index.html
 
 TODO
 ----
 
-A separate stylesheet/script that takes the export XML and renders nice local static HTML output that includes/links the downloaded images/asssets.
+* Output messages/comments against list items & notes in the HTML
+* Paginate HTML by original Backpack page with searchable bootstrap-select and fragment URLs
+* Add XSL params for output of a single page by ID/title (for archiving and sharing)
