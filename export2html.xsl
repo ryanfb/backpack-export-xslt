@@ -62,6 +62,18 @@
   </xsl:for-each>
 </xsl:template>
 
+<xsl:template match="tags">
+  <p>
+    Tags:
+    <xsl:apply-templates />
+  </p>
+</xsl:template>
+
+<xsl:template match="tag">
+  <button type="button" class="btn btn-default btn-xs" disabled="disabled"><xsl:value-of select="@name"/></button>
+  <xsl:text disable-output-escaping="yes"><![CDATA[&nbsp;]]></xsl:text>
+</xsl:template>
+
 <xsl:template match="page|note|list|email|separator|gallery">
   <div>
     <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
@@ -75,6 +87,7 @@
     </h1>
     <xsl:choose>
       <xsl:when test="name(.) = 'page'">
+        <xsl:apply-templates select="tags"/>
         <xsl:apply-templates select="belongings"/>
       </xsl:when>
       <xsl:when test="name(.) = 'separator'">
