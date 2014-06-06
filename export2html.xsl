@@ -36,6 +36,17 @@
         .separator h1 {
           margin-bottom: .25em;
         }
+        .page {
+          border: 1px solid #e1e1e8;
+          background-color: #f7f7f9;
+          border-radius: 4px;
+          padding: 1em;
+          margin-bottom: 1em;
+          margin-top: 2em;
+        }
+        .page h1 {
+          margin-top: 0px;
+        }
       </style>
       <script>
       $(document).ready(function(){
