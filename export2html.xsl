@@ -14,13 +14,12 @@
         <xsl:value-of select="$account"/>
         <xsl:text>.backpackit.com</xsl:text>
       </title>
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
-      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"/>
-      <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.js"></script>
-      <!-- <script src="https://raw.githubusercontent.com/Nijikokun/textile/master/lib/textile.js"></script> -->
-      <script src="https://raw.githubusercontent.com/borgar/textile-js/master/lib/textile.js"></script>
+      <link rel="stylesheet" href="lib/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="lib/css/bootstrap-theme.min.css"/>
+      <script src="lib/js/jquery-1.11.0.min.js"></script>
+      <script src="lib/js/bootstrap.min.js"></script>
+      <script src="lib/js/bootstrap-select.js"></script>
+      <script src="lib/js/textile.js"></script>
       <style>
         .email h1, .list h1, .separator h1, .note h1, .gallery h1 {
           font-size: 1em;
